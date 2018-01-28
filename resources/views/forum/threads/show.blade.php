@@ -20,7 +20,7 @@
                     Unsubscribe
                 </a>
             @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
-                <a class="btn btn-primary btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
+                <a class="btn btn-success btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
                     Subscribe
                 </a>
             @endcan
