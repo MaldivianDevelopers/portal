@@ -6,7 +6,15 @@
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1 members-list">
+
             @if($members->count())
+
+            @isset($company)
+                <div class="panel-title">
+                    <h4><i class="fa fa-building-o" aria-hidden="true"></i> {{ $company }}</h4>
+                </div>
+            @endisset
+
             @foreach($members as $member)
 
                     <div class="member-item">

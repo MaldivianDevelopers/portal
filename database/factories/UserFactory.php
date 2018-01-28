@@ -19,6 +19,8 @@ $factory->define(User::class, function (Faker\Generator $faker) {
         'banned_at' => null,
         'type' => User::DEFAULT,
         'bio' => $faker->sentence,
+        'company' => $faker->company,
+        'job_title' => $faker->jobTitle
     ];
 });
 

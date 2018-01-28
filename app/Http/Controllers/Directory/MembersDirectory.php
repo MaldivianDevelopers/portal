@@ -32,4 +32,12 @@ class MembersDirectory extends Controller
 
         return view('directory.members', compact('members'));
     }
+
+
+    public function membersByCompany($company)
+    {
+        $members = User::whereCompany($company)->orderBy('name')->get();
+
+        return view('directory.members', compact('members', 'company'));
+    }
 }

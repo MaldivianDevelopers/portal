@@ -36,6 +36,7 @@ Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@sho
 Route::get('user/{username}', ['as' => 'profile', 'uses' => 'ProfileController@show']);
 Route::get('avatar/{username}', ['as' => 'avatar', 'uses' => 'ProfileController@avatar']);
 Route::get('members', ['as' => 'members', 'uses' => 'Directory\MembersDirectory@index']);
+Route::get('members/{company}', ['as' => 'company.members', 'uses' => 'Directory\MembersDirectory@membersByCompany']);
 
 // Settings
 Route::get('settings', ['as' => 'settings.profile', 'uses' => 'Settings\ProfileController@edit']);
