@@ -250,4 +250,13 @@ final class User extends Authenticatable
 
         parent::delete();
     }
+
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($user) {
+           $user->list_on_public_directory = true;
+        });
+    }
 }
