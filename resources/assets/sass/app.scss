@@ -18,8 +18,9 @@
 @import "search";
 @import "wysiwyg";
 
-
+html,
 body {
+  height: 100vh;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -84,3 +85,19 @@ body {
   }
 }
 
+
+
+.app-container {
+  height: 100%;
+  padding-top: 65px;
+  display: flex;
+  flex-direction: column;
+
+  .app-body {
+    flex-grow: 1;
+  }
+
+  .app-footer {
+    width: 100vw;
+  }
+}

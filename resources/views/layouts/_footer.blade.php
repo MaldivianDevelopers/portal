@@ -1,6 +1,6 @@
 
 
-<div id="footer" class="container-fluid text-center footer-bg">
+<div id="footer" class="app-footer container-fluid text-center footer-bg">
 
     Copyright &copy; 2013 - {{ date('Y') }} {{ config('app.name') }}&bull;
     <a href="https://github.com/MaldivianDevelopers"><i class="fa fa-github"></i></a>

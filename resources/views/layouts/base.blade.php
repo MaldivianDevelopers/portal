@@ -22,10 +22,13 @@
 </head>
 <body class="{{ $bodyClass ?? '' }}">
 
-<div id="app">
+<div id="app" class="app-container">
     @include('layouts._nav')
 
-    @yield('body')
+    <div class="app-body">
+        @yield('body')
+    </div>
+
 
     @include('layouts._footer')
 </div>
