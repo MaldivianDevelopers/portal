@@ -7,7 +7,7 @@
 
     <div class="jumbotron text-center">
         <div class="logo"><img src="{{ asset('images/logo.svg') }}" title="{{ config('app.name') }}"></div>
-        <h2>Developers</h2>
+        <h2 class="text-white">Developers</h2>
         <h4>community in the Maldives</h4>
 
         <div style="margin-top:40px">
@@ -25,4 +25,6 @@
             @endif
         </div>
     </div>
+
+    @include('layouts._sponsors')
 @endsection

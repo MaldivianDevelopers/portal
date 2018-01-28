@@ -20,14 +20,16 @@
 
 
 body {
-  margin-top: 65px;
-  margin-bottom: 65px;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .selectize-input.items .item {
   background: $brand-primary !important;
   color: #fff !important;
+}
+
+.darker-shade {
+  background: rgba(0,0,0,0.3);
 }
 
 .members-list {
@@ -81,3 +83,4 @@ body {
     }
   }
 }
+
