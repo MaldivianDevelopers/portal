@@ -28,6 +28,8 @@ class MembersDirectory extends Controller
             $members = User::where('list_on_public_directory', true)->get();
         }
 
+        $members = $members->shuffle();
+
         return view('directory.members', compact('members'));
     }
 }
