@@ -12,15 +12,16 @@
     <h2>{{ $user->name() }}</h2>
 
 
-
-    @if($company = $user->company)
-        <div>
-            <h6>{{ $user->job_title }}</h6>
-            <h5>
-                <i class="fa fa-building-o" aria-hidden="true"></i>
-                <a href="{{ route('company.members', [$company]) }}">{{ $company }}</a>
-            </h5>
-        </div>
+    @if($user->profile_type === 'professional')
+        @if($company = $user->company)
+            <div>
+                <h6>{{ $user->job_title }}</h6>
+                <h5>
+                    <i class="fa fa-building-o" aria-hidden="true"></i>
+                    <a href="{{ route('company.members', [$company]) }}">{{ $company }}</a>
+                </h5>
+            </div>
+        @endif
     @endif
 
     @auth

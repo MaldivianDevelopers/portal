@@ -20,7 +20,7 @@ final class UpdateProfile
     public function __construct(User $user, array $attributes = [])
     {
         $this->user = $user;
-        $this->attributes = array_only($attributes, ['name', 'email', 'username', 'github_username', 'bio', 'company', 'job_title', 'list_on_public_directory', 'mobile', 'keep_mobile_private', 'twitter_username']);
+        $this->attributes = array_only($attributes, ['name', 'email', 'username', 'github_username', 'bio', 'company', 'job_title', 'list_on_public_directory', 'mobile', 'keep_mobile_private', 'twitter_username', 'profile_type']);
     }
 
     public static function fromRequest(User $user, UpdateProfileRequest $request): self
@@ -36,6 +36,7 @@ final class UpdateProfile
             'mobile' => trim(strip_tags($request->mobile())),
             'keep_mobile_private' => $request->mobileKepPrivately(),
             'twitter_username' => trim(strip_tags($request->twitterUsername())),
+            'profile_type' => trim(strip_tags($request->profileType())),
         ]);
     }
 

@@ -94,13 +94,29 @@
             </div>
             @endFormGroup
 
-            {!! Form::label('Additional Features', null, ['class' => 'col-md-3 control-label']) !!}
+            @formGroup('profile_type')
+            {!! Form::label('Profile Type', null, ['class' => 'col-md-3 control-label']) !!}
+            <div class="col-md-6">
+                {!! Form::select('profile_type', ['personal' => 'Personal', 'professional' => 'Professional'], Auth::user()->profile_type, ['style' => 'width: 100%']); !!}
+                @error('profile_type')
+                <p><i>Only Professional profile will display your workplace details.</i></p>
 
+            </div>
+            @endFormGroup
+
+
+
+
+
+
+            @formGroup('features')
+            {!! Form::label('Additional Features', null, ['class' => 'col-md-3 control-label']) !!}
             <div class="col-md-6">
                 <br/>
                 <div>
                     {!! Form::checkbox('list_on_public_directory', 1, Auth::user()->list_on_public_directory) !!} List me on members public directory
                 </div>
+
             </div>
             @endFormGroup
 

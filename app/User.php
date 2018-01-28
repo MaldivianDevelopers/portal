@@ -44,7 +44,8 @@ final class User extends Authenticatable
         'twitter_username',
         'mobile',
         'keep_mobile_private',
-        'list_on_public_directory'
+        'list_on_public_directory',
+        'profile_type'
     ];
 
     /**

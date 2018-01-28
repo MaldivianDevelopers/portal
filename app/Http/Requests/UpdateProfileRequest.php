@@ -19,6 +19,7 @@ class UpdateProfileRequest extends Request
             'keep_mobile_private' => 'boolean',
             'twitter_username' => 'nullable|string',
             'list_on_public_directory' => 'boolean',
+            'profile_type' => 'required|in:personal,professional'
         ];
     }
 
@@ -71,5 +72,10 @@ class UpdateProfileRequest extends Request
     public function mobileKepPrivately()
     {
         return (bool) $this->get('keep_mobile_private', false);
+    }
+
+    public function profileType(): string
+    {
+        return  (string) strtolower($this->get('profile_type'));
     }
 }
