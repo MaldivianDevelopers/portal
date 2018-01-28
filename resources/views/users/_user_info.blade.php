@@ -65,4 +65,20 @@
             </a>
         @endif
     </div>
+
+
+        @if($user->skills->count() > 0)
+            <div class="user-skills">
+                @foreach($user->skills as $skill)
+                    <span class="label label-primary">{{ $skill->name }}</span>
+                @endforeach
+            </div>
+        @else
+            @auth
+            <div>
+                <a  class="btn btn-sm btn-warning" href="{{ route('settings.skills') }}">You have not updated your skills, pleaseclick here to update note.</a>
+            </div>
+            @endauth
+        @endif
+
 </div>

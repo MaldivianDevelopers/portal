@@ -11,6 +11,9 @@
                             <li class="{{ active('settings.profile') }}">
                                 <a href="{{ route('settings.profile') }}">Profile</a>
                             </li>
+                            <li class="{{ active('settings.skills') }}">
+                                <a href="{{ route('settings.skills') }}">My Skills</a>
+                            </li>
                             <li class="{{ active('settings.password') }}">
                                 <a href="{{ route('settings.password') }}">Password</a>
                             </li>

@@ -41,6 +41,9 @@ Route::get('members/{company}', ['as' => 'company.members', 'uses' => 'Directory
 // Settings
 Route::get('settings', ['as' => 'settings.profile', 'uses' => 'Settings\ProfileController@edit']);
 Route::put('settings', ['as' => 'settings.profile.update', 'uses' => 'Settings\ProfileController@update']);
+Route::get('settings/skills', ['as' => 'settings.skills', 'uses' => 'Settings\ProfileController@skills']);
+Route::put('settings/skills', ['as' => 'settings.skills.update', 'uses' => 'Settings\ProfileController@skillsUpdate']);
+
 Route::get('settings/password', ['as' => 'settings.password', 'uses' => 'Settings\PasswordController@edit']);
 Route::put('settings/password', ['as' => 'settings.password.update', 'uses' => 'Settings\PasswordController@update']);
 

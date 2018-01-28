@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Reply;
+use App\Models\Skill;
 use App\Models\Thread;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
@@ -52,6 +53,12 @@ final class User extends Authenticatable
      * {@inheritdoc}
      */
     protected $hidden = ['password', 'remember_token', 'list_on_public_directory', 'keep_mobile_private'];
+
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class);
+    }
 
     public function id(): int
     {

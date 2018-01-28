@@ -9,6 +9,8 @@ class ProfileController extends Controller
 {
     public function show(User $user)
     {
+        $user->load('skills');
+
         return view('users.profile', compact('user'));
     }
 

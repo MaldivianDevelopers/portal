@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Settings;
 
+use App\Http\Requests\Request;
+use App\Models\Skill;
 use Auth;
 use App\Jobs\UpdateProfile;
 use App\Http\Controllers\Controller;
@@ -27,5 +29,32 @@ class ProfileController extends Controller
         $this->success('settings.updated');
 
         return redirect()->route('settings.profile');
+    }
+
+
+    public function skills()
+    {
+        $userSkills = (Auth::user()->skills->pluck('id'))->toArray();
+
+        $skills = Skill::orderBy('type')->orderBy('name')->get(['id', 'name', 'type']);
+        $skills = $skills->groupBy('type');
+
+        return view('users.settings.skills', compact('userSkills', 'skills'));
+
+    }
+
+    public function skillsUpdate()
+    {
+        $skills = request('skills');
+
+        if($skills) {
+            Auth::user()->skills()->sync($skills);
+        } else {
+            Auth::user()->skills()->sync([]);
+        }
+
+        $this->success('settings.updated');
+
+        return redirect()->route('settings.skills');
     }
 }
