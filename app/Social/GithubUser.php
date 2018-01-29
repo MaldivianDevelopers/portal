@@ -19,8 +19,11 @@ final class GithubUser implements Arrayable
 
     public function isTooYoung(): bool
     {
-        return false;
-//        return $this->createdAt() > $this->twoWeeksAgo();
+        if(!is_null(env('DISABLE_AGE_CHECK')) && env('DISABLE_AGE_CHECK') === true) {
+            return false;
+        }
+
+        return $this->createdAt() > $this->twoWeeksAgo();
     }
 
     public function createdAt(): Carbon
