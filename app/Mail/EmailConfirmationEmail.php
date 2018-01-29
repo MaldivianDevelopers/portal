@@ -3,12 +3,13 @@
 namespace App\Mail;
 
 use App\User;
+use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
 final class EmailConfirmationEmail extends Mailable
 {
-    use SerializesModels;
+    use Queueable, SerializesModels;
 
     /**
      * @var \App\User
