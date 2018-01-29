@@ -15,6 +15,12 @@
                 </div>
             @endisset
 
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <h6>Total {{ $members->count() === 1 ? '1 member' : $members->count() . ' members' }}</h6>
+            @else
+                <h6>Publicly listing {{ $members->count() === 1 ? '1 member' : $members->count() . ' members' }}  out of {{ $totalCount }}</h6>
+            @endif
+
             @foreach($members as $member)
 
                     <div class="member-item">

@@ -28,16 +28,19 @@ class MembersDirectory extends Controller
             $members = User::where('list_on_public_directory', true)->get();
         }
 
+        $totalCount = User::count();
+
         $members = $members->shuffle();
 
-        return view('directory.members', compact('members'));
+        return view('directory.members', compact('members', 'totalCount'));
     }
 
 
     public function membersByCompany($company)
     {
         $members = User::whereCompany($company)->where('profile_type','professional')->orderBy('name')->get();
+        $totalCount = User::whereCompany($company)->count();
 
-        return view('directory.members', compact('members', 'company'));
+        return view('directory.members', compact('members', 'company', 'totalCount'));
     }
 }
