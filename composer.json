@@ -8,6 +8,7 @@
         "bugsnag/bugsnag-laravel": "^2.4",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^3.3",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
