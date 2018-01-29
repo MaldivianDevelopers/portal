@@ -1,6 +1,5 @@
 // 3rd Party Libraries
 //@import "../../../node_modules/bootswatch/paper/variables";
-//@import "variables";
 @import "~bootstrap/scss/bootstrap";
 //@import "../../../node_modules/bootswatch/paper/bootswatch";
 //@import "../../../node_modules/selectize-scss/src/selectize.bootstrap3";
@@ -17,6 +16,7 @@
 @import "profile";
 @import "search";
 @import "wysiwyg";
+@import "variables";
 
 html,
 body {
