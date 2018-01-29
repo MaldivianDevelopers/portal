@@ -15,7 +15,7 @@
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-success btn-block" href="{{ route('threads.create') }}">Create Thread</a>
+            <a class="btn btn-success btn-block mt-3 mb-3" href="{{ route('threads.create') }}">Create Thread</a>
 
             @include('layouts._ads._forum_sidebar')
 
@@ -36,38 +36,41 @@
 
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default">
-                        <div class="panel-heading thread-info">
-                            @if (count($thread->replies()))
-                                @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
-                            @else
-                                @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                            @endif
-
-                            <div class="thread-info-author">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="card-title thread-info">
                                 @if (count($thread->replies()))
-                                    @php($lastReply = $thread->replies()->last())
-                                    <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
-                                    {{ $lastReply->createdAt()->diffForHumans() }}
+                                    @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
                                 @else
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
-                                    {{ $thread->createdAt()->diffForHumans() }}
+                                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
                                 @endif
 
-                                    @if(!is_null($thread->solution_reply_id))
-                                        <span class="label label-primary">solved</span>
-                                    @endif
+                                <div class="thread-info-author">
+                                    @if (count($thread->replies()))
+                                        @php($lastReply = $thread->replies()->last())
+                                            <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
+                                            {{ $lastReply->createdAt()->diffForHumans() }}
+                                            @else
+                                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
+                                                {{ $thread->createdAt()->diffForHumans() }}
+                                            @endif
+
+                                            @if(!is_null($thread->solution_reply_id))
+                                                <span class="label label-primary">solved</span>
+                                            @endif
+                                </div>
+
+                                @include('forum.threads.info.tags')
                             </div>
 
-                            @include('forum.threads.info.tags')
-                        </div>
+                            <div class="">
+                                <a href="{{ route('thread', $thread->slug()) }}">
+                                    <span class="badge badge-primary pull-right">{{ count($thread->replies()) }}</span>
+                                    <h4 class="media-heading">{{ $thread->subject() }}</h4>
+                                </a>
 
-                        <div class="panel-body">
-                            <a href="{{ route('thread', $thread->slug()) }}">
-                                <span class="badge pull-right">{{ count($thread->replies()) }}</span>
-                                <h4 class="media-heading">{{ $thread->subject() }}</h4>
                                 <p>{{ $thread->excerpt() }}</p>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
