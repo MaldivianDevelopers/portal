@@ -63,7 +63,7 @@
                                 @include('forum.threads.info.tags')
                             </div>
 
-                            <div class="">
+                            <div>
                                 <a href="{{ route('thread', $thread->slug()) }}">
                                     <span class="badge badge-primary pull-right">{{ count($thread->replies()) }}</span>
                                     <h4 class="media-heading">{{ $thread->subject() }}</h4>
