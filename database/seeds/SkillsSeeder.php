@@ -11,7 +11,7 @@ class SkillsSeeder extends Seeder
      */
     public function run()
     {
-        $this->command->info('Seeding default list of skills');
+        $this->command->info('Updating list of skills');
 
         $skills = [
             'language' => [
@@ -66,11 +66,10 @@ class SkillsSeeder extends Seeder
                     $slug = str_slug($slugKey);
                 }
 
-                \App\Models\Skill::create([
-                    'name' => $skill,
-                    'type' => $skillType,
-                    'slug' => $slug
-                ]);
+                \App\Models\Skill::updateOrCreate(
+                    ['type' => $skillType,'slug' => $slug],
+                    ['name' => $skill]
+                );
             }
         }
 
