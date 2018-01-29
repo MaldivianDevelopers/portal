@@ -36,6 +36,12 @@
                 @error('company')
             @endFormGroup
 
+            @formGroup('job_title')
+                {!! Form::label('Job Title', null, ['class' => 'col-md-3 control-label']) !!}
+                {!! Form::text('job_title', session('job_title'), ['class' => 'form-control', 'placeholder' => 'Job Title']) !!}
+                @error('job_title')
+            @endFormGroup
+
             @formGroup('mobile')
                 {!! Form::label('Mobile') !!}
                 {!! Form::text('mobile', session('mobile'), ['class' => 'form-control', 'placeholder' => '+960 000000']) !!}
