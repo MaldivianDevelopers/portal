@@ -14,7 +14,7 @@
     text-align: center;
 }
 #sponsors h2 {
-    font-size: $font-size-large;
+    font-size: $font-size-lg;
     margin-top: 35px;
 }
 .sponsors-list {
@@ -27,9 +27,9 @@
     max-width: 50%;
 }
 
-@media (min-width: $screen-sm-min) {
+@include media-breakpoint-down(sm) {
     #sponsors h2 {
-        font-size: $font-size-h3;
+        font-size: $h3-font-size;
         margin-top: 50px;
     }
     .sponsors-list {
@@ -52,14 +52,13 @@
     }
 }
 
-@media (min-width: $screen-md-min) {
-    #sponsors h2 {
-        font-size: $font-size-h2;
-    }
-    .sponsors-list {
-        div {
-            flex: 1 0 33.33%;
-            width: 33.33%;
+@include media-breakpoint-up(md) {
+        #sponsors h2 {
+            font-size: $h2-font-size;
         }
-    }
+        .sponsors-list {
+            div {
+                width: 33.33%;
+            }
+        }
 }
