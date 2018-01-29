@@ -73,7 +73,7 @@
                     <span class="label label-primary">{{ $skill->name }}</span>
                 @endforeach
             </div>
-        @else
+        @elseif(Auth::user()->id === $user->id)
             @auth
             <div>
                 <a  class="btn btn-sm btn-warning" href="{{ route('settings.skills') }}">You have not updated your skills, pleaseclick here to update note.</a>
