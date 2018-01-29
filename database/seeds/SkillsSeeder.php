@@ -15,14 +15,14 @@ class SkillsSeeder extends Seeder
 
         $skills = [
             'language' => [
-                'Javascript', 'ASP', 'PHP', 'Python', 'HTML', 'XML', 'Java', 'c-sharp' => 'C#', 'Ruby', 'c-plus-plus' => 'C++', 'Erlang',
-                'Go', 'Elixir', 'Clojure', 'Haskell', 'NodeJS', 'Swift', 'SQL', 'CSS', 'SASS', 'LESS',
+                'Javascript', 'TypeScript', 'ASP', 'PHP', 'Python', 'HTML', 'XML', 'Java', 'c-sharp' => 'C#', 'Ruby', 'c-plus-plus' => 'C++', 'Erlang',
+                'Go', 'Elixir', 'Clojure', 'Haskell', 'NodeJS', 'Swift', 'SQL', 'CSS', 'SASS', 'LESS', 'Stylus',
                 'Rust', 'Scala', 'f-sharp'=> 'F#', 'Objective-C', 'Action Script', 'Coffee Script', 'Matlab', 'Perl', 'R'
             ],
 
 
             'framework' => [
-                'AngularJS', 'React', 'React Native', 'Ruby on Rails', 'jQuery', 'Laravel', 'Django', 'Symfony', 'Codeigniter', 'CakePHP',
+                'AngularJS', 'Angular 2+', 'React', 'React Native', 'Ruby on Rails', 'jQuery', 'Laravel', 'Django', 'Symfony', 'Codeigniter', 'CakePHP',
                 'Zend Framework', 'ASP.NET', 'ExpressJS', 'Drupal', 'Sinatra', 'Vaadin', 'SailJS',
                 'Silex', 'VueJS', 'EmberJS', 'Aurelia', 'Ionic', 'yii2', 'CycleJS', 'falcon'
             ],
