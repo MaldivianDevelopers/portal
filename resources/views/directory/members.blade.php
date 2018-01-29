@@ -23,7 +23,11 @@
                             <a href="{{ route('profile', $member->username()) }}" class="username">
                                 <span>{{ $member->username }}</span>
                             </a>
-                            <small>Member since {{ $member->created_at->diffForHumans() }}</small>
+                            <small>
+                            @if($member->confirmed)
+                            <i title='verified' class="fa fa-check-circle text-success" style="margin-right: 5px" aria-hidden="true"></i>
+                            @endif
+                            Member since {{ $member->created_at->diffForHumans() }}</small>
                         </div>
                         <div class="social_links">
                             @if ($member->githubUsername())
