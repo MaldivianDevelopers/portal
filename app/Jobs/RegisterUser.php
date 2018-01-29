@@ -31,7 +31,7 @@ final class RegisterUser
         $user->confirmation_code = str_random(60);
         $user->type = User::DEFAULT;
         $user->remember_token = '';
-        $user->ip = $this->request->ip();
+        $user->ip = $this->request->ip() ?? '0.0.0.0';
         $user->save();
 
         return $user;
