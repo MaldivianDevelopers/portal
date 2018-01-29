@@ -4,8 +4,8 @@
         <h4 class="text-info">We'd like to thank these <strong>great companies</strong> for supporting us</h4>
         <div class="sponsors-list">
             <div>
-                <a href="https://about.travis-ci.com/">
-                    <img src="{{ asset('images/sponsors/travis-ci/TravisCI-Full-Color-light.png') }}">
+                <a href="https://faseyha.net/">
+                    <img src="{{ asset('images/sponsors/faseyha-recharge/logo.png') }}">
                 </a>
             </div>
 
@@ -21,6 +21,11 @@
                 </a>
             </div>
 
+            <div>
+                <a href="https://about.travis-ci.com/">
+                    <img src="{{ asset('images/sponsors/travis-ci/TravisCI-Full-Color-light.png') }}">
+                </a>
+            </div>
         </div>
     </div>
 </div>
