@@ -3,14 +3,14 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="row forum">
+    <div class="row mb-4 forum">
         <div class="col-md-3">
             @include('users._user_info', ['user' => $thread->author(), 'avatarSize' => 100])
 
             <hr>
 
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
+                <a class="btn btn-light btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
                     Edit
                 </a>
             @endcan
@@ -48,8 +48,8 @@
             <h1>{{ $title }}</h1>
             <hr>
 
-            <div class="panel panel-default">
-                <div class="panel-heading thread-info">
+            <div class="card">
+                <div class="card-header thread-info">
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
 
                     <div class="thread-info-author">
@@ -60,7 +60,7 @@
                     @include('forum.threads.info.tags')
                 </div>
 
-                <div class="panel-body forum-content">
+                <div class="card-body forum-content">
                     @md($thread->body())
                 </div>
             </div>
@@ -68,12 +68,12 @@
             @include('layouts._ads._carbon')
 
             @if($thread->replies()->count())
-            <h5>Replies</h5>
+            <h5 class="mt-3 mb-3">Replies</h5>
             @endif
 
             @foreach ($thread->replies() as $reply)
-                <div class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
-                    <div class="panel-heading thread-info">
+                <div class="card mb-4 {{ $thread->isSolutionReply($reply) ? 'card-success' : '' }}">
+                    <div class="card-header thread-info">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
                         <div class="thread-info-author">
@@ -91,17 +91,17 @@
 
                         @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                             <div class="thread-info-tags">
-                                <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
+                                <a class="btn btn-light btn-sm" href="{{ route('replies.edit', $reply->id()) }}">
                                     Edit
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
+                                <a class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
                                     Delete
                                 </a>
                             </div>
                         @endcan
                     </div>
 
-                    <div class="panel-body forum-content">
+                    <div class="card-body forum-content">
                         @can(App\Policies\ThreadPolicy::UPDATE, $thread)
                             <div class="pull-right" style="font-size: 20px">
                                 @if ($thread->isSolutionReply($reply))
