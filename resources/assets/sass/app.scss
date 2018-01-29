@@ -1,10 +1,13 @@
 // 3rd Party Libraries
 //@import "../../../node_modules/bootswatch/paper/variables";
+
+@import "~bootstrap/scss/functions";
+@import "variables";
 @import "~bootstrap/scss/bootstrap";
 //@import "../../../node_modules/bootswatch/paper/bootswatch";
 //@import "../../../node_modules/selectize-scss/src/selectize.bootstrap3";
-//@import "../../../node_modules/bootstrap-markdown/css/bootstrap-markdown.min";
-//@import "../../../node_modules/prismjs/themes/prism.css";
+@import "../../../node_modules/bootstrap-markdown/css/bootstrap-markdown.min";
+@import "../../../node_modules/prismjs/themes/prism.css";
 
 // Components
 @import "carbon";
@@ -16,12 +19,15 @@
 @import "profile";
 @import "search";
 @import "wysiwyg";
-@import "variables";
 
 html,
 body {
   height: 100vh;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.btn{
+  text-transform: uppercase;
 }
 
 .selectize-input.items .item {

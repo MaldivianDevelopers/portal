@@ -27,7 +27,7 @@
     max-width: 50%;
 }
 
-@include media-breakpoint-down(sm) {
+@include media-breakpoint-up(sm) {
     #sponsors h2 {
         font-size: $h3-font-size;
         margin-top: 50px;
@@ -58,6 +58,7 @@
         }
         .sponsors-list {
             div {
+                flex: 1 0 33.33%;
                 width: 33.33%;
             }
         }

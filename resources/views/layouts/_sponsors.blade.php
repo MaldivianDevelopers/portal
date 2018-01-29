@@ -1,7 +1,7 @@
 <div id="sponsors" class="container-fluid sponsors-area">
 
     <div class="container">
-        <h4 class="text-info">We'd like to thank these <strong>great companies</strong> for supporting us</h4>
+        <h4 class="text-white">We'd like to thank these <strong>great companies</strong> for supporting us</h4>
         <div class="sponsors-list">
             <div>
                 <a href="https://about.travis-ci.com/">

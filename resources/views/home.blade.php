@@ -15,11 +15,11 @@
                 <a class="btn btn-primary" href="{{ route('register') }}">
                     Join the Community
                 </a>
-                <a class="btn btn-default" href="{{ route('forum') }}">
+                <a class="btn btn-light" href="{{ route('forum') }}">
                     Visit the Forum
                 </a>
             @else
-                <a class="btn btn-default" href="{{ route('threads.create') }}">
+                <a class="btn btn-light" href="{{ route('threads.create') }}">
                     Start a Thread
                 </a>
             @endif
