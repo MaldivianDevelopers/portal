@@ -10,7 +10,7 @@
     @endcan
 
     <h2>{{ $user->name() }} 
-    @if($member->confirmed)
+    @if($user->confirmed)
         <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
     @endif
     </h2>
