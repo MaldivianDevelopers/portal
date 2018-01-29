@@ -9,7 +9,11 @@
         </a>
     @endcan
 
-    <h2>{{ $user->name() }}</h2>
+    <h2>{{ $user->name() }} 
+    @if($member->confirmed)
+        <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+    @endif
+    </h2>
 
 
     @if($user->profile_type === 'professional')
