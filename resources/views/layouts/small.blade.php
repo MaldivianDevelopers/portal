@@ -2,7 +2,7 @@
 
 @section('body')
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top:30px;">
             <div class="col-md-4 col-md-offset-4">
                 @include('layouts._alerts')
 
