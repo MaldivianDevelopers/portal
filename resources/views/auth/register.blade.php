@@ -6,7 +6,7 @@
     @if (! session()->has('githubData'))
         <p>To register, we require you to login with your Github account. After login you can choose your password in the settings screen.</p>
 
-        <a href="{{ route('login.github') }}" class="btn btn-default btn-block">
+        <a href="{{ route('login.github') }}" class="btn btn-light btn-block">
             <i class="fa fa-github"></i> Github
         </a>
     @else

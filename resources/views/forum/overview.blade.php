@@ -37,32 +37,31 @@
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="card-title thread-info">
+                        <div class="card-header thread-info">
+                            @if (count($thread->replies()))
+                                @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
+                            @else
+                                @include('forum.threads.info.avatar', ['user' => $thread->author()])
+                            @endif
+
+                            <div class="thread-info-author">
                                 @if (count($thread->replies()))
-                                    @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
-                                @else
-                                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                                @endif
+                                    @php($lastReply = $thread->replies()->last())
+                                        <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
+                                        {{ $lastReply->createdAt()->diffForHumans() }}
+                                        @else
+                                            <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
+                                            {{ $thread->createdAt()->diffForHumans() }}
+                                        @endif
 
-                                <div class="thread-info-author">
-                                    @if (count($thread->replies()))
-                                        @php($lastReply = $thread->replies()->last())
-                                            <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
-                                            {{ $lastReply->createdAt()->diffForHumans() }}
-                                            @else
-                                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
-                                                {{ $thread->createdAt()->diffForHumans() }}
-                                            @endif
-
-                                            @if(!is_null($thread->solution_reply_id))
-                                                <span class="label label-primary">solved</span>
-                                            @endif
-                                </div>
-
-                                @include('forum.threads.info.tags')
+                                        @if(!is_null($thread->solution_reply_id))
+                                            <span class="label label-primary">solved</span>
+                                        @endif
                             </div>
 
+                            @include('forum.threads.info.tags')
+                        </div>
+                        <div class="card-body">
                             <div>
                                 <a href="{{ route('thread', $thread->slug()) }}">
                                     <span class="badge badge-primary pull-right">{{ count($thread->replies()) }}</span>

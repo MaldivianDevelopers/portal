@@ -3,13 +3,15 @@
 @section('body')
     <div class="container">
         <div class="row" style="margin-top:30px;">
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-md-4 offset-md-4">
                 @include('layouts._alerts')
 
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{ $title }}</div>
-                    <div class="panel-body">
-                        @yield('small-content')
+                <div class="card">
+                    <div class="card-header">{{ $title }}</div>
+                    <div class="card-body">
+                        <div>
+                            @yield('small-content')
+                        </div>
                     </div>
                 </div>
 
