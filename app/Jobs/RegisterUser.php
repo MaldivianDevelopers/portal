@@ -9,79 +9,29 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 final class RegisterUser
 {
-    /**
-     * @var string
-     */
-    private $name;
 
-    /**
-     * @var string
-     */
-    private $email;
+    protected $request;
 
-    /**
-     * @var string
-     */
-    private $username;
-
-    /**
-     * @var string
-     */
-    private $ip;
-
-    /**
-     * @var array
-     */
-    private $attributes;
-
-    /**
-     * @var string
-     */
-    private $githubId;
-
-    /**
-     * @var string
-     */
-    private $githubUsername;
-
-    public function __construct(string $name, string $email, string $username, string $ip, string $githubId, string $githubUsername)
+    public function __construct(RegisterRequest $request)
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->username = $username;
-        $this->ip = $ip;
-        $this->githubId = $githubId;
-        $this->githubUsername = $githubUsername;
+        $this->request = $request;
     }
 
     public static function fromRequest(RegisterRequest $request): self
     {
-        return new static(
-            $request->name(),
-            $request->emailAddress(),
-            $request->username(),
-            $request->ip(),
-            $request->githubId(),
-            $request->githubUsername()
-        );
+        return new static($request);
     }
 
     public function handle(): User
     {
-        $this->assertEmailAddressIsUnique($this->email);
-        $this->assertUsernameIsUnique($this->username);
+        $this->assertEmailAddressIsUnique($this->request->get('email'));
+        $this->assertUsernameIsUnique($this->request->get('username'));
 
-        $user = new User([
-            'name' => $this->name,
-            'email' => $this->email,
-            'username' => strtolower($this->username),
-            'ip' => $this->ip,
-            'github_id' => $this->githubId,
-            'github_username' => $this->githubUsername,
-            'confirmation_code' => str_random(60),
-            'type' => User::DEFAULT,
-            'remember_token' => '',
-        ]);
+        $user = new User($this->request->validated());
+        $user->confirmation_code = str_random(60);
+        $user->type = User::DEFAULT;
+        $user->remember_token = '';
+        $user->ip = $this->request->ip();
         $user->save();
 
         return $user;
