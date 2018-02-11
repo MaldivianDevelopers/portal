@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Jobs\ConfirmUser;
 use Auth;
 use App\User;
 use Socialite;
@@ -52,7 +53,10 @@ class GithubController extends Controller
 
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
-        $this->dispatchNow(new UpdateProfile($user, ['github_username' => $socialiteUser->getNickname(), 'confirmed' => 1]));
+        if($user->isUnconfirmed()){
+            $this->dispatchNow(new ConfirmUser($user));
+        };
+        $this->dispatchNow(new UpdateProfile($user, ['github_username' => $socialiteUser->getNickname()]));
 
         Auth::login($user);
 
